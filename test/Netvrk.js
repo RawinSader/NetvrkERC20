@@ -19,11 +19,11 @@ contract('Netvrk', (accounts) => {
   it('Set the total supply on deployment', async () => {
     const instance = await Netvrk.deployed();
     const totalSupply = await instance.totalSupply();
-    assert.equal(totalSupply.toNumber(), TOTAL_SUPPLY, 'Total supply was set to correctly');
+    assert.equal(totalSupply.toNumber(), TOTAL_SUPPLY, 'Error: contract does not have the initial total supply.');
   });
   it('Assign all initial tokens to the contract owner on deployment', async () => {
     const instance = await Netvrk.deployed();
     const balance = await instance.balanceOf(accounts[0]);
-    assert.equal(balance, TOTAL_SUPPLY, 'Contract owner initially owns all of the tokens');
+    assert.equal(balance, TOTAL_SUPPLY, 'Error: contract owner does not initially own all tokens.');
   });
 });
