@@ -2,6 +2,13 @@ pragma solidity ^0.8.11;
 
 contract Netvrk {
 
+    string public name = "Netvrk";
+    string public symbol = "NVR";
+
+    uint256 public totalSupply;
+
+    address private owner;
+
     mapping(address => uint256) public balanceOf;
 
     uint256 public totalSupply;
