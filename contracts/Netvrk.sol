@@ -12,6 +12,7 @@ contract Netvrk {
     mapping(address => uint256) public balanceOf;
 
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
+
     // Setting the total amount of tokens available
     // Setting the owner of the contract
     // Assigning the total supply to the owner of the contract

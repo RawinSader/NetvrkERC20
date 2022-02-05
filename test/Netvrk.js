@@ -34,7 +34,7 @@ contract('Netvrk', (accounts) => {
       assert(error.message.indexOf('Insufficient funds.') >= 0, 'Error: Insufficient funds not detected.');
     }
   });
-  it('Transferring tokens', async () => {
+  it('Transfer tokens', async () => {
     const instance = await Netvrk.deployed();
     const receipt = await instance.transfer(accounts[1], 100, { from: accounts[0] });
 
