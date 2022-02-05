@@ -4,7 +4,7 @@ const { TOTAL_SUPPLY, ZERO_ADDRESS, CONTRACT_NAME, CONTRACT_SYMBOL } = require('
 contract('Netvrk', (accounts) => {
   it('Deploy the contract', async () => {
     const instance = await Netvrk.deployed();
-    assert.notEqual(instance.address, ZERO_ADDRESS, "Contract has address")
+    assert.notEqual(instance.address, ZERO_ADDRESS, 'Error: contract was not deployed.');
   });
   it('Set the contract name', async () => {
     const instance = await Netvrk.deployed();
