@@ -7,8 +7,6 @@ contract Netvrk {
 
     uint256 public totalSupply;
 
-    address private owner;
-
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 
@@ -20,7 +18,6 @@ contract Netvrk {
     // Assigning the total supply to the owner of the contract
     constructor(uint256 _initialSupply) public {
         totalSupply = _initialSupply;
-        owner = msg.sender;
         balanceOf[owner] = _initialSupply;
     }
 
