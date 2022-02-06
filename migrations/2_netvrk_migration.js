@@ -1,6 +1,8 @@
 const Netvrk = artifacts.require('Netvrk');
-const { TOTAL_SUPPLY } = require('../common/constants');
+const NetvrkICO = artifacts.require('NetvrkICO');
+const { NETVRK_TOTAL_SUPPLY, NETVRK_TOKEN_PRICE } = require('../common/constants');
 
-module.exports = function (deployer) {
-  deployer.deploy(Netvrk, TOTAL_SUPPLY);
+module.exports = async (deployer) => {
+  await deployer.deploy(Netvrk, NETVRK_TOTAL_SUPPLY);
+  await deployer.deploy(NetvrkICO, Netvrk.address, NETVRK_TOKEN_PRICE);
 };
