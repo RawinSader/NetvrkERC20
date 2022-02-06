@@ -73,9 +73,9 @@ contract('Netvrk', (accounts) => {
   it('Transfer tokens from another account', async () => {
     const instance = await Netvrk.deployed();
 
-    from = accounts[2];
-    to = accounts[3];
-    spender = accounts[4];
+    from = accounts[5];
+    to = accounts[6];
+    spender = accounts[7];
 
     await instance.transfer(from, 100, { from: accounts[0] });
     await instance.approve(spender, 20, { from });
