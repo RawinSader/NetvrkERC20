@@ -18,7 +18,7 @@ contract Netvrk {
     // Assigning the total supply to the owner of the contract
     constructor(uint256 _initialSupply) public {
         totalSupply = _initialSupply;
-        balanceOf[owner] = _initialSupply;
+        balanceOf[msg.sender] = _initialSupply;
     }
 
     // Transferring tokens ownership from an account to the other

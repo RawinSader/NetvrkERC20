@@ -1,5 +1,5 @@
 const Netvrk = artifacts.require('Netvrk');
-const { TOTAL_SUPPLY, ZERO_ADDRESS, CONTRACT_NAME, CONTRACT_SYMBOL } = require('../common/constants');
+const { NETVRK_TOTAL_SUPPLY, ZERO_ADDRESS, NETVRK_TOKEN_NAME, NETVRK_TOKEN_SYMBOL } = require('../common/constants');
 
 contract('Netvrk', (accounts) => {
   it('Deploy the contract', async () => {
@@ -9,22 +9,22 @@ contract('Netvrk', (accounts) => {
   it('Set the contract name', async () => {
     const instance = await Netvrk.deployed();
     const name = await instance.name();
-    assert.equal(name, CONTRACT_NAME, 'Error: contract has the wrong name.');
+    assert.equal(name, NETVRK_TOKEN_NAME, 'Error: contract has the wrong name.');
   });
   it('Set the contract symbol', async () => {
     const instance = await Netvrk.deployed();
     const name = await instance.symbol();
-    assert.equal(name, CONTRACT_SYMBOL, 'Error: contract has the wrong symbol.');
+    assert.equal(name, NETVRK_TOKEN_SYMBOL, 'Error: contract has the wrong symbol.');
   });
   it('Set the total supply on deployment', async () => {
     const instance = await Netvrk.deployed();
     const totalSupply = await instance.totalSupply();
-    assert.equal(totalSupply.toNumber(), TOTAL_SUPPLY, 'Error: contract does not have the initial total supply.');
+    assert.equal(totalSupply.toNumber(), NETVRK_TOTAL_SUPPLY, 'Error: contract does not have the initial total supply.');
   });
   it('Assign all initial tokens to the contract owner on deployment', async () => {
     const instance = await Netvrk.deployed();
     const balance = await instance.balanceOf(accounts[0]);
-    assert.equal(balance, TOTAL_SUPPLY, 'Error: contract owner does not initially own all tokens.');
+    assert.equal(balance, NETVRK_TOTAL_SUPPLY, 'Error: contract owner does not initially own all tokens.');
   });
   it('Detect insufficient funds when transferring tokens', async () => {
     const instance = await Netvrk.deployed();
@@ -40,7 +40,7 @@ contract('Netvrk', (accounts) => {
 
     const senderBalance = await instance.balanceOf(accounts[0]);
     const recipientBalance = await instance.balanceOf(accounts[1]);
-    assert.equal(senderBalance, TOTAL_SUPPLY - 100, 'Error: Failed to reduce the sender\'s balance by the right amount.');
+    assert.equal(senderBalance, NETVRK_TOTAL_SUPPLY - 100, 'Error: Failed to reduce the sender\'s balance by the right amount.');
     assert.equal(recipientBalance, 100, 'Error: failed to increase the recipient\'s balance by the right amount.');
 
     assert.equal(receipt.logs.length, 1, 'Error: no events triggered.');
