@@ -12,6 +12,11 @@ contract NetvrkICO {
 
     event Purchased(address _buyer, uint256 _amount);
 
+    modifier onlyOwner {
+        require(msg.sender == owner, "onlyOwner");
+        _;
+    }
+
     constructor(Netvrk _token, uint256 _tokenPrice) public {
         owner = msg.sender;
         netvrk = _token;
@@ -31,5 +36,11 @@ contract NetvrkICO {
     function safeMultiply(uint256 x, uint256 y) internal pure returns (uint z){
         require(y == 0 || (z = x * y) / y == x);
         return x * y;
+    }
+
+    // owner of the ico should get back all the tokens owner by this ico contract
+    function terminate() public onlyOwner {
+        require(netvrk.transfer(owner, netvrk.balanceOf(address(this))));
+        selfdestruct(payable(owner));
     }
 }

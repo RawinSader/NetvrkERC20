@@ -1,6 +1,6 @@
 const NetvrkICO = artifacts.require('NetvrkICO');
 const Netvrk = artifacts.require('Netvrk');
-const { ZERO_ADDRESS, NETVRK_TOKEN_PRICE } = require('../common/constants');
+const { ZERO_ADDRESS, NETVRK_TOKEN_PRICE, NETVRK_TOTAL_SUPPLY } = require('../common/constants');
 
 contract('NetvrkICO', (accounts) => {
 
@@ -59,6 +59,30 @@ contract('NetvrkICO', (accounts) => {
     } catch(error) {
       assert(error.message.indexOf('Insufficient funds.') >= 0, 'Error: ICO does not have that many tokens for you to buy.');
     }
+  });
+  it('We. Are. Done. For. The. Night.', async () => {
+    const instance = await NetvrkICO.deployed();
+    const netvrkInstance = await Netvrk.deployed();
+
+    const icoInitialBalance = 50000;
+
+    const user = accounts[4];
+
+    await netvrkInstance.transfer(instance.address, icoInitialBalance, { from: accounts[0] });
+
+    const amount = 1000;
+    await instance.buy(amount, { from: user, value: amount * NETVRK_TOKEN_PRICE });
+
+    try {
+      await instance.terminate({ from: user });
+    } catch(error) {
+      assert(error.message.indexOf('onlyOwner') >= 0, 'Error: only the owner can call this functions');
+    }
+
+    await instance.terminate({ from: accounts[0] });
+    const adminBalance = await netvrkInstance.balanceOf(accounts[0]);
+    // using total supply because the token and ico owners are the same
+    assert.equal(adminBalance.toNumber(), NETVRK_TOTAL_SUPPLY - 1003, 'Error: did not properly return tokens to admin.');
 
   });
 });
