@@ -19,3 +19,7 @@ Some tools provide secure and usable ERC20 contracts through inheritance for us 
 ## Test
 - ``truffle test``
 
+## Notes
+
+- In my code, I use a lot of require statements which is expensive in terms of gas, they can easily be merged into one statement.
+
