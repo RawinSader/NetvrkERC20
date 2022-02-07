@@ -15,7 +15,9 @@ Some tools provide secure and usable ERC20 contracts through inheritance for us 
 - truffle
 
 ## Before running the three commands below
-- Launch ganache
+- Install truffle globally: ``https://trufflesuite.com/docs/truffle/getting-started/installation``
+- run ``npm install``  
+- Download and launch ganache
 
 ## Migrate
 - ``truffle migrate --reset --network ganache``
