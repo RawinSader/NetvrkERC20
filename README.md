@@ -12,11 +12,11 @@ Some tools provide secure and usable ERC20 contracts through inheritance for us 
 - NodeJS
 - Javascript/Jquery
 - Solidity
-- truffle
+- Truffle
 
 ## Before running the three commands below
 - Install truffle globally: ``https://trufflesuite.com/docs/truffle/getting-started/installation``
-- run ``npm install``  
+- Run ``npm install``  
 - Download and launch ganache
 
 ## Migrate
@@ -29,7 +29,8 @@ Some tools provide secure and usable ERC20 contracts through inheritance for us 
 - ``truffle console --network ganache``
 
 ## Before using the webapp
-- connect metamask to ganache
+- Download the metamask extension
+- Connect metamask to ganache
 
 ## Notes
 - In my code, I use a lot of require statements which is expensive in terms of gas, they can easily be merged into one statement.
