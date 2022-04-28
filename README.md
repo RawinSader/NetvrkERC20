@@ -5,7 +5,7 @@ Some tools provide secure and usable ERC20 contracts through inheritance for us 
 - macOS Monterey
 
 ## App environment
-- Ganache
+- Ganachee
 - Metamask extension
 
 ## Programming environment
